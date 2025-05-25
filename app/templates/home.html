@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+    <h1>Stock Info Viewer</h1>
+    <form method="POST">
+        <input type="text" name="symbol" placeholder="Enter stock symbol (e.g. AAPL)" required>
+        <button type="submit">Get Info</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if stock %}
+        <div class="card">
+            <h2>{{ stock.name }} ({{ stock.symbol }})</h2>
+            <p><strong>Price:</strong> ${{ stock.price }}</p>
+            <p><strong>Sector:</strong> {{ stock.sector }}</p>
+            <p><strong>Market Cap:</strong> {{ stock.market_cap }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
