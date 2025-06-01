@@ -1,10 +1,11 @@
 from flask import Blueprint, render_template, request
 import yfinance as yf
 
-main = Blueprint("main", __name__)
+main = Blueprint("main", __name__) # Create a Blueprint named 'main' for organizing routes
 
 @main.route("/", methods=["GET", "POST"])
 def home():
+    """ Home route to display stock information based on user input. """
     stock_data = None
     error = None
 
